@@ -35,7 +35,7 @@
                     <ul class="navbar-nav mr-auto">
                         @foreach (Menu::get('AdminNavBar')->roots() as $item)
                             <li class="nav-item">
-                                <a href="{{ $item->url() }}">{{ $item->title }}</a>
+                                <a class="nav-link" href="{{ $item->url() }}">{{ $item->title }}</a>
                             </li>
                         @endforeach
                     </ul>

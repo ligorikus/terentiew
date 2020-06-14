@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <form action="{{route('units.destroy', compact('unit'))}}" method="post">
+            {{csrf_field()}}
             @method('delete')
             <h1>{{$unit->name}}</h1>
             <hr>

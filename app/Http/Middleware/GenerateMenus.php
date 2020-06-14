@@ -16,6 +16,7 @@ class GenerateMenus
     public function handle($request, Closure $next)
     {
         \Menu::make('AdminNavBar', function ($menu) {
+            $menu->add(__('products.title'), ['route' => 'products.index']);
             $menu->add(__('units.title'), ['route' => 'units.index']);
         });
 
