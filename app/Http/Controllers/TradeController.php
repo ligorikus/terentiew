@@ -26,6 +26,9 @@ class TradeController extends Controller
             $transaction->value = $request->cost - $request->cost * ($request->discount / 100);
             $transaction->type = 'income';
             $transaction->save();
+
+            $wallet = Wallet::find($transaction->wallet_id);
+            $wallet->value += $transaction->value;
         }
         foreach ($request->products as $product) {
             $express = new ProductExpress();
