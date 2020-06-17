@@ -28,6 +28,11 @@ class WalletController extends Controller
         return redirect()->route('wallets.index');
     }
 
+    public function show(Wallet $wallet)
+    {
+        return view('wallets.show', compact('wallet'));
+    }
+
     public function edit(Wallet $wallet)
     {
         return view('wallets.form', compact('wallet'));

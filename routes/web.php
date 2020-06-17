@@ -26,6 +26,9 @@ Route::get('units/{unit}/delete', 'UnitController@delete')->name('units.delete')
 Route::resource('wallets', 'WalletController');
 Route::get('wallets/{wallet}/delete', 'WalletController@delete')->name('wallets.delete');
 
+Route::get('wallets/{wallet}/transactions', 'TransactionController@create')->name('transactions.create');
+Route::post('wallets/{wallet}/transactions', 'TransactionController@store')->name('transactions.store');
+
 \Illuminate\Support\Facades\Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
