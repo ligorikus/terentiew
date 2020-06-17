@@ -9,7 +9,13 @@ class ProductExpress extends Model
     protected $fillable = [
         'value',
         'type',
+        'product_id'
     ];
+
+    public function product()
+    {
+        $this->belongsTo(Product::class);
+    }
 
     public function transaction()
     {

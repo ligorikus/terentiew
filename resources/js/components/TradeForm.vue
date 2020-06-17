@@ -48,7 +48,7 @@
             <label class="col-12 col-sm-2 col-form-label">{{ $t('wallets.payment_type') }}</label>
             <div class="col-12 col-sm-10 col-md-4">
                 <select class="form-control" v-model="wallet">
-                    <option v-for="wallet in wallets">
+                    <option v-for="wallet in wallets" :key="wallet.id">
                         {{wallet.type}}
                     </option>
                 </select>
@@ -114,16 +114,17 @@
                 }
             },
             sell() {
+                let wallet_id = this.wallets.find(elem => {return elem.type === this.wallet}).id;
                 axios
                     .post(this.sell_route, {
                         products: this.active_products,
                         discount: this.discount,
                         to_employee: this.to_employee,
-                        wallet: this.wallet,
+                        wallet: wallet_id,
                         cost: this.total_cost
                     })
                     .then((response) => {
-                        console.log(response.data);
+                        document.location.href = response.data.route;
                     })
                     .catch((error) => {
                         console.log(error);
