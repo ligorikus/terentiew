@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Model\Product;
 use App\Model\Unit;
+use App\Model\Wallet;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Route::model('wallet', Wallet::class);
         Route::model('unit', Unit::class);
         Route::model('product', Product::class);
 

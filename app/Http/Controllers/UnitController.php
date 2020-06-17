@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UnitRequest;
 use App\Model\Unit;
-use Illuminate\Http\Request;
 
 class UnitController extends Controller
 {

@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Model\Product;
-use App\Model\ProductPrice;
 use App\Model\Unit;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {

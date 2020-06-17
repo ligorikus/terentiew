@@ -23,6 +23,9 @@ Route::get('products/{product}/delete', 'ProductController@delete')->name('produ
 Route::resource('units', 'UnitController');
 Route::get('units/{unit}/delete', 'UnitController@delete')->name('units.delete');
 
+Route::resource('wallets', 'WalletController');
+Route::get('wallets/{wallet}/delete', 'WalletController@delete')->name('wallets.delete');
+
 \Illuminate\Support\Facades\Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
