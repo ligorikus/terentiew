@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>{{__('wallets.value')}} {{$wallet->value}}</h2>
+        <h2>{{__('wallets.value')}}: {{$wallet->value}} ₸</h2>
         <table class="table">
             <thead>
             <tr>
