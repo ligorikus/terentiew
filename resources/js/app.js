@@ -8,18 +8,20 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import VueI18n from 'vue-i18n';
+import Locale from './vue-i18n-locales.generated';
+Vue.use(VueI18n);
+const lang = document.documentElement.lang.substr(0, 2);
+window.i18n = new VueI18n({
+    locale: lang,
+    messages: Locale
+});
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+Vue.component('trade-form', require('./components/TradeForm.vue').default);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('dropdown', require('./components/Dropdown.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +31,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    i18n,
 });
