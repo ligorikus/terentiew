@@ -14,4 +14,9 @@ class TradeController extends Controller
         $wallets = Wallet::all();
         return view('trade.form', compact('products', 'wallets'));
     }
+
+    public function sell(Request $request)
+    {
+
+    }
 }

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'TradeController@form')->name('trade.index');
-Route::post('/trade', 'TradeController@sell')->name('trade.sell');
+Route::post('/sell', 'TradeController@sell')->name('trade.sell');
 
 Route::resource('products', 'ProductController');
 Route::get('products/{product}/delete', 'ProductController@delete')->name('products.delete');

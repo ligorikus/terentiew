@@ -63,7 +63,10 @@
             </div>
         </div>
         <h2>{{ $t('products.total_cost')}}: <span v-if="!cost">{{total_cost}}</span><span v-else>{{cost}} <span>({{total_cost}})</span></span></h2>
-        <button type="submit" class="btn btn-primary" v-show="active_products.length && ((wallet.length && total_cost > 0) || to_employee)">{{ $t('actions.save')}}</button>
+        <button type="submit" class="btn btn-primary" @click="sell"
+                v-show="active_products.length && ((wallet.length && total_cost > 0) || to_employee)">
+            {{ $t('actions.save')}}
+        </button>
     </div>
 </template>
 
@@ -73,6 +76,7 @@
         props: {
             products: Array,
             wallets: Array,
+            sell_route: String,
         },
         data() {
             return {
@@ -89,6 +93,7 @@
         methods: {
             validateSelection(selection) {
                 if (selection !== undefined) {
+                    selection.count = 1;
                     this.active_products.push(selection);
                     this.product_list.splice(this.product_list.map(function(e) { return e.id}).indexOf(selection.id), 1);
                 }
@@ -107,6 +112,22 @@
                 if (this.discount < 0) {
                     this.discount = 0;
                 }
+            },
+            sell() {
+                axios
+                    .post(this.sell_route, {
+                        products: this.active_products,
+                        discount: this.discount,
+                        to_employee: this.to_employee,
+                        wallet: this.wallet,
+                        cost: this.total_cost
+                    })
+                    .then((response) => {
+                        console.log(response.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             }
         },
         computed: {
