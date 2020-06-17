@@ -29,6 +29,7 @@ class TradeController extends Controller
 
             $wallet = Wallet::find($transaction->wallet_id);
             $wallet->value += $transaction->value;
+            $wallet->save();
         }
         foreach ($request->products as $product) {
             $express = new ProductExpress();
