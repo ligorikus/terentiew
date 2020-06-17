@@ -2,12 +2,17 @@
 
 namespace App\Model;
 
+use App\Model\ProductPrice;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
     protected $fillable = [
-        'name'
+        'name', 'unit_id'
+    ];
+
+    protected $with = [
+        'price'
     ];
 
     public function unit()
@@ -23,5 +28,10 @@ class Product extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class, 'product_components', 'component_id', 'product_id');
+    }
+
+    public function price()
+    {
+        return $this->hasOne(ProductPrice::class);
     }
 }
