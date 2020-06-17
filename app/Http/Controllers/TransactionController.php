@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    /*public function index()
+    public function index()
     {
-        $units = Transaction::orderBy('id')->get();
-        return view('units.index', compact('units'));
-    }*/
+        $transactions = Transaction::orderBy('id')->get();
+        return view('transactions.index', compact('transactions'));
+    }
 
     public function create(Wallet $wallet)
     {

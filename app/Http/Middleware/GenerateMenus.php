@@ -19,6 +19,7 @@ class GenerateMenus
             $menu->add(__('products.title'), ['route' => 'products.index']);
             $menu->add(__('units.title'), ['route' => 'units.index']);
             $menu->add(__('wallets.title'), ['route' => 'wallets.index']);
+            $menu->add(__('transactions.title'), ['route' => 'transactions.index']);
         });
 
         return $next($request);

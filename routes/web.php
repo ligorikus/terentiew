@@ -26,6 +26,7 @@ Route::get('units/{unit}/delete', 'UnitController@delete')->name('units.delete')
 Route::resource('wallets', 'WalletController');
 Route::get('wallets/{wallet}/delete', 'WalletController@delete')->name('wallets.delete');
 
+Route::get('transactions', 'TransactionController@index')->name('transactions.index');
 Route::get('wallets/{wallet}/transactions', 'TransactionController@create')->name('transactions.create');
 Route::post('wallets/{wallet}/transactions', 'TransactionController@store')->name('transactions.store');
 
