@@ -16,7 +16,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="type">{{__('transactions.type')}}</label>
 
-                <div class="col-sm-10 col-md-4 custom-control custom-radio">
+                <div class="col-sm-10 col-md-4">
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" class="custom-control-input" name="type" id="radio-income" aria-label="{{__('transactions.income')}}" value="income">
                         <label class="custom-control-label" for="radio-income">{{__('transactions.income')}}</label>

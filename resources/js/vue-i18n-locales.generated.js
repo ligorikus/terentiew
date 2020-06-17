@@ -12,7 +12,9 @@ export default {
             "product": "Продукт",
             "count": "Количество",
             "add": "Добавить продукт",
-            "total_cost": "Общая стоимость"
+            "total_cost": "Общая стоимость",
+            "to_employee": "Для работника",
+            "discount": "Скидка"
         },
         "wallets": {
             "payment_type": "Способ оплаты"
