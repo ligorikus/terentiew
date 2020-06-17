@@ -17,7 +17,7 @@
                     <td>{{$wallet->type}}</td>
                     <td>{{$wallet->value}}</td>
                     <td>
-                        <a href="{{route('wallets.show', compact('wallet'))}}" class="btn btn-primary">{{__('controls.show')}}</a>
+                        <a href="{{route('wallets.show', compact('wallet'))}}" class="btn btn-primary">{{__('transactions.title')}}</a>
                         <a href="{{route('wallets.edit', compact('wallet'))}}" class="btn btn-warning">{{__('controls.update')}}</a>
                         <a href="{{route('wallets.delete', compact('wallet'))}}" class="btn btn-danger">{{__('controls.delete')}}</a>
                     </td>

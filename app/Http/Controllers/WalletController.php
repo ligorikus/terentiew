@@ -25,7 +25,7 @@ class WalletController extends Controller
         $wallet->value = 0;
         $wallet->save();
 
-        return redirect()->route('wallets.index');
+        return redirect()->route('wallets.show', compact('wallet'));
     }
 
     public function show(Wallet $wallet)
