@@ -34,4 +34,9 @@ class Product extends Model
     {
         return $this->hasOne(ProductPrice::class);
     }
+
+    public function transactions()
+    {
+        return $this->belongsToMany(Transaction::class, 'product_expresses');
+    }
 }

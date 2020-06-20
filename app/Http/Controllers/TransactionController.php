@@ -36,6 +36,12 @@ class TransactionController extends Controller
 
         return redirect()->route('wallets.show', compact('wallet'));
     }
+
+    public function show(Transaction $transaction)
+    {
+        return view('transactions.show', compact('transaction'));
+    }
+
 /*
     public function edit(Unit $unit)
     {

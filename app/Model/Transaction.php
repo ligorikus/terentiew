@@ -18,6 +18,6 @@ class Transaction extends Model
 
     public function products()
     {
-        return $this->hasMany(ProductExpress::class);
+        return $this->belongsToMany(Product::class, 'product_expresses')->withPivot(['value' , 'type']);
     }
 }

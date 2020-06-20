@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Model\Product;
+use App\Model\Transaction;
 use App\Model\Unit;
 use App\Model\Wallet;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -36,6 +37,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('wallet', Wallet::class);
         Route::model('unit', Unit::class);
         Route::model('product', Product::class);
+        Route::model('transaction', Transaction::class);
 
         parent::boot();
     }

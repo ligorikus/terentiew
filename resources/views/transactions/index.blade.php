@@ -8,11 +8,12 @@
                     <td>{{__('wallets.wallet')}}</td>
                     <td>{{__('transactions.value')}}</td>
                     <td>{{__('transactions.type')}}</td>
+                    <td>{{__('controls.time')}}</td>
                     <td></td>
                 </tr>
             </thead>
             <tbody>
-            @foreach($transactions as $transaction)
+            @foreach($transactions->sortByDesc('created_at') as $transaction)
                 <tr>
                     <td>{{$transaction->id}}</td>
                     <td>{{$transaction->wallet->type}}</td>
@@ -26,7 +27,11 @@
                             @endif
                         </h5>
                     </td>
+                    <td>{{$transaction->created_at}}</td>
                     <td>
+                        <a href="{{route('transactions.show', compact('transaction'))}}" class="btn btn-primary">
+                            {{__('controls.show')}}
+                        </a>
                         {{--<a href="{{route('transactions.edit', compact('transaction'))}}" class="btn btn-warning">{{__('controls.update')}}</a>
                         <a href="{{route('transactions.delete', compact('transaction'))}}" class="btn btn-danger">{{__('controls.delete')}}</a>--}}
                     </td>
