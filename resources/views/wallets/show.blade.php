@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($wallet->transactions->sortBy('id') as $transaction)
+            @foreach($wallet->transactions->sortByDesc('created_at') as $transaction)
                 <tr>
                     <td>{{$transaction->id}}</td>
                     <td>{{$transaction->value}}</td>
