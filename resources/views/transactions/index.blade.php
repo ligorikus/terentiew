@@ -32,8 +32,8 @@
                         <a href="{{route('transactions.show', compact('transaction'))}}" class="btn btn-primary">
                             {{__('controls.show')}}
                         </a>
-                        {{--<a href="{{route('transactions.edit', compact('transaction'))}}" class="btn btn-warning">{{__('controls.update')}}</a>
-                        <a href="{{route('transactions.delete', compact('transaction'))}}" class="btn btn-danger">{{__('controls.delete')}}</a>--}}
+                        {{--<a href="{{route('transactions.edit', compact('transaction'))}}" class="btn btn-warning">{{__('controls.update')}}</a>--}}
+                        <a href="{{route('transactions.delete', compact('transaction'))}}" class="btn btn-danger">{{__('controls.delete')}}</a>
                     </td>
                 </tr>
             @endforeach

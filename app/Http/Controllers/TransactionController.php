@@ -56,16 +56,17 @@ class TransactionController extends Controller
 
         return redirect()->route('units.index');
     }
-
-    public function delete(Unit $unit)
+*/
+    public function delete(Transaction $transaction)
     {
-        return view('units.delete', compact('unit'));
+        return view('transactions.delete', compact('transaction'));
     }
 
-    public function destroy(Unit $unit)
+    public function destroy(Transaction $transaction)
     {
-        $unit->delete();
+        $transaction->products()->detach();
+        $transaction->delete();
 
-        return redirect()->route('units.index');
-    }*/
+        return redirect()->route('transactions.index');
+    }
 }
