@@ -23,10 +23,10 @@ class Transaction extends Model
         return $this->belongsToMany(Product::class, 'product_expresses')->withPivot(['value' , 'type']);
     }
 
-    public function getCreatedAtAttribute($value)
+ /*   public function getCreatedAtAttribute($value)
     {
         $date = Carbon::createFromFormat('Y-m-d H:i:s', $value, 'UTC');
         $timezone = Config::get('app.timezone');
         return $date->setTimezone($timezone)->toDateTimeString();
-    }
+    }*/
 }
