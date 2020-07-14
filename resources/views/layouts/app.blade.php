@@ -33,25 +33,31 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @php
+                            $enable = \DB::table('auth_enable')->select()->first();
+                            $enable = $enable ? $enable->enable : false;
+                        @endphp
+                        @if (!$enable || \Auth::check() && \Auth::user()->roles->contains('name', 'admin'))
                         @foreach (Menu::get('AdminNavBar')->roots() as $item)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ $item->url() }}">{{ $item->title }}</a>
                             </li>
                         @endforeach
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto" style="display: none">
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
+                           {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif--}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
