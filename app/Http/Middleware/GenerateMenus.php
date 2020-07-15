@@ -27,6 +27,8 @@ class GenerateMenus
             $enable = $enable ? $enable->enable : false;
             if (!$enable && Auth::check() && Auth::user()->roles->contains('name', 'admin')) {
                 $menu->add('Включить авторизацию?', ['route' => 'enable_auth']);
+            }
+            if (Auth::check() && Auth::user()->roles->contains('name', 'admin')) {
                 $menu->add(__('users.title'), ['route' => 'users.index']);
             }
         });
