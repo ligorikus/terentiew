@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <h2><a href="{{route('wallets.show', ['wallet' => $transaction->wallet])}}">{{$transaction->wallet->type}}</a></h2>
+        <h5>{{__('transactions.creator')}}: {{$transaction->creator ? $transaction->creator->name : ''}}</h5>
         <table class="table">
             <thead>
             <tr>

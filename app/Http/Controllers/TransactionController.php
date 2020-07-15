@@ -26,6 +26,8 @@ class TransactionController extends Controller
            'value' => $request->value,
            'type' => $request->type
         ]);
+        $transaction->creator()->associate(auth()->id());
+        $transaction->save();
 
         if ($transaction->type === 'income') {
             $wallet->value += $transaction->value;

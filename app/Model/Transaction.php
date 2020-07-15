@@ -22,4 +22,9 @@ class Transaction extends Model
     {
         return $this->belongsToMany(Product::class, 'product_expresses')->withPivot(['value' , 'type']);
     }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
 }

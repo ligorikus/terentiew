@@ -20,17 +20,4 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
-
-    public function handle($request, Closure $next, ...$guards)
-    {
-        $enable = DB::table('auth_enable')->select()->first();
-        $enable = $enable ? $enable->enable : false;
-        if (!$enable) {
-            return $next($request);
-        }
-        $this->authenticate($request, $guards);
-
-        return $next($request);
-    }
-
 }

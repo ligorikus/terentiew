@@ -33,17 +33,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        @php
-                            $enable = \DB::table('auth_enable')->select()->first();
-                            $enable = $enable ? $enable->enable : false;
-                        @endphp
-                        @if (!$enable || \Auth::check() && \Auth::user()->roles->contains('name', 'admin'))
-                        @foreach (Menu::get('AdminNavBar')->roots() as $item)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ $item->url() }}">{{ $item->title }}</a>
-                            </li>
-                        @endforeach
-                        @endif
+                        @auth
+                            @if (\Auth::user()->roles->contains('name', 'admin'))
+                                @foreach (Menu::get('AdminNavBar')->roots() as $item)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ $item->url() }}">{{ $item->title }}</a>
+                                    </li>
+                                @endforeach
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

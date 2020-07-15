@@ -9,6 +9,7 @@
                 <td>#</td>
                 <td>{{__('transactions.value')}}</td>
                 <td>{{__('transactions.type')}}</td>
+                <td>{{__('transactions.creator')}}</td>
                 <td>{{__('controls.time')}}</td>
                 <td></td>
             </tr>
@@ -27,6 +28,7 @@
                         @endif
                         </h5>
                     </td>
+                    <td>{{$transaction->creator ? $transaction->creator->name : ''}}</td>
                     <td>{{$transaction->created_at}}</td>
                     <td>
                         <a href="{{route('transactions.show', compact('transaction'))}}" class="btn btn-primary">

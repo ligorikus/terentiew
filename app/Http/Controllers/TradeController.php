@@ -25,6 +25,7 @@ class TradeController extends Controller
             $transaction->wallet_id = $request->wallet;
             $transaction->value = $request->cost - $request->cost * ($request->discount / 100);
             $transaction->type = 'income';
+            $transaction->creator()->associate(auth()->id());
             $transaction->save();
 
             $wallet = Wallet::find($transaction->wallet_id);

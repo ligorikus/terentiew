@@ -39,13 +39,5 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('users/{user}/delete', 'UserController@delete')->name('users.delete');
         Route::get('transactions/{transaction}/delete', 'TransactionController@delete')->name('transactions.delete');
         Route::delete('transactions/{transaction}', 'TransactionController@destroy')->name('transactions.destroy');
-
-        Route::get('enable_auth', function () {
-            return view('auth.enable');
-        })->name('enable_auth');
-        Route::post('enable_auth', function () {
-            \DB::table('auth_enable')->where('enable', false)->update(['enable' => true]);
-            return redirect()->route('home');
-        })->name('do_enable_auth');
     });
 });

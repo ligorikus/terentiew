@@ -17,9 +17,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        $enable = DB::table('auth_enable')->select()->first();
-        $enable = $enable ? $enable->enable : false;
-        if (!$enable || Auth::user()->roles->contains('name', 'admin')) {
+        if (Auth::user()->roles->contains('name', 'admin')) {
             return $next($request);
         }
         return redirect()->route('/');
