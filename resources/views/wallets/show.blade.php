@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <h2>{{__('wallets.value')}}: {{$wallet->value}} ₸</h2>
+        <a href="{{route('transactions.create', compact('wallet'))}}" class="btn btn-primary">{{__('transactions.create')}}</a>
         <table class="table">
             <thead>
             <tr>
@@ -42,6 +43,5 @@
             @endforeach
             </tbody>
         </table>
-        <a href="{{route('transactions.create', compact('wallet'))}}" class="btn btn-primary">{{__('transactions.create')}}</a>
     </div>
 @endsection

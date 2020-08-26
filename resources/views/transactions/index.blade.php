@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        {{$transactions->links()}}
         <table class="table">
             <thead>
                 <tr>

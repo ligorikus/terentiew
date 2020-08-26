@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        <a href="{{route('wallets.create')}}" class="btn btn-primary">{{__('wallets.create')}}</a>
         <table class="table">
             <thead>
                 <tr>
@@ -25,7 +26,6 @@
             @endforeach
             </tbody>
         </table>
-        <a href="{{route('wallets.create')}}" class="btn btn-primary">{{__('wallets.create')}}</a>
     </div>
 
 @endsection

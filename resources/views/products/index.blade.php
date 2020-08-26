@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        <a href="{{route('products.create')}}" class="btn btn-primary">{{__('products.create')}}</a>
         <table class="table">
             <thead>
                 <tr>
@@ -26,7 +27,6 @@
             @endforeach
             </tbody>
         </table>
-        <a href="{{route('products.create')}}" class="btn btn-primary">{{__('products.create')}}</a>
     </div>
 
 @endsection
