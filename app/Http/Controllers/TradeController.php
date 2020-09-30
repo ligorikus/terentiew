@@ -23,7 +23,11 @@ class TradeController extends Controller
         if (!$request->to_employee) {
             $transaction = new Transaction();
             $transaction->wallet_id = $request->wallet;
-            $transaction->value = $request->cost - $request->cost * ($request->discount / 100);
+            if ($request->has('pay_what_you_want')) {
+                $transaction->value = $request->result_sum;
+            } else {
+                $transaction->value = $request->cost - $request->cost * ($request->discount / 100);
+            }
             $transaction->type = 'income';
             $transaction->creator()->associate(auth()->id());
             $transaction->save();
@@ -32,6 +36,7 @@ class TradeController extends Controller
             $wallet->value += $transaction->value;
             $wallet->save();
         }
+
         foreach ($request->products as $product) {
             $express = new ProductExpress();
             $express->product_id = $product['id'];

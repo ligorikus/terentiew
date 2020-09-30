@@ -39,7 +39,7 @@
             <label class="col-12 col-sm-2 col-form-label">{{ $t('products.to_employee')}}</label>
             <div class="col-12 col-sm-10 col-md-4">
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="to_employee" v-model="to_employee">
+                    <input type="checkbox" class="custom-control-input" id="to_employee" v-model="to_employee" @change="result_sum=0">
                     <label class="custom-control-label" for="to_employee"></label>
                 </div>
             </div>
@@ -55,6 +55,21 @@
             </div>
         </div>
         <div class="form-group row" v-show="active_products.length && !to_employee">
+            <label class="col-12 col-sm-2 col-form-label">{{ $t('products.pay_what_you_want')}}</label>
+            <div class="col-12 col-sm-10 col-md-4">
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="pay_what_you_want" v-model="pay_what_you_want">
+                    <label class="custom-control-label" for="pay_what_you_want"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row" v-show="active_products.length && pay_what_you_want">
+            <label class="col-12 col-sm-2 col-form-label">{{ $t('products.result_sum') }}</label>
+            <div class="col-12 col-sm-10 col-md-4">
+                <input type="text" class="form-control" v-model="result_sum">
+            </div>
+        </div>
+        <div class="form-group row" v-show="active_products.length && !to_employee && !pay_what_you_want">
             <div class="col-md-10 row">
                 <label class="col-12 col-sm-2 col-form-label">{{ $t('products.discount') }}</label>
                 <div class="col-12 col-sm-10 col-md-2 percent">
@@ -84,8 +99,10 @@
                 active_products: [],
                 wallet: '',
                 to_employee: false,
+                pay_what_you_want: false,
                 discount: 0,
-                total_cost: 0
+                total_cost: 0,
+                result_sum: 0
             }
         },
         created() {
@@ -130,7 +147,9 @@
                         discount: this.discount,
                         to_employee: this.to_employee,
                         wallet: wallet_id,
-                        cost: this.total_cost
+                        cost: this.total_cost,
+                        pay_what_you_want: this.pay_what_you_want,
+                        result_sum: this.pay_what_you_want ? this.result_sum : this.total_cost,
                     })
                     .then((response) => {
                         document.location.href = response.data.route;

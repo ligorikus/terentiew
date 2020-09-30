@@ -14,6 +14,8 @@ export default {
             "add": "Добавить продукт",
             "total_cost": "Общая стоимость",
             "to_employee": "Для работника",
+            "pay_what_you_want": "Плати сколько хочешь",
+            "result_sum": "Итого оплачено",
             "discount": "Скидка"
         },
         "wallets": {
