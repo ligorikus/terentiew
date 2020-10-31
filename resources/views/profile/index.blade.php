@@ -1,12 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h1>{{ !isset($user) ? __('users.create') : __('users.update')}}</h1>
-        <form action="{{(!isset($user)) ? route('users.store') : route('users.update', ['user' => $user])}}" method="post">
+        <h1>{{__('users.profile')}}</h1>
+        <form action="{{route('profile.update')}}" method="post">
             {{csrf_field()}}
-            @if (isset($user))
-                @method('PUT')
-            @endif
+            @method('PUT')
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -19,28 +17,28 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="name">{{__('users.name')}}</label>
                 <div class="col-sm-10 col-md-4">
-                    <input type="text" name="name" class="form-control" @if (isset($user)) value="{{$user->name}}"@endif>
+                    <input type="text" name="name" class="form-control" value="{{$user->name}}">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="short_name">{{__('users.email')}}</label>
+                <label class="col-sm-2 col-form-label" for="email">{{__('users.email')}}</label>
                 <div class="col-sm-10 col-md-4">
-                    <input type="text" name="email" class="form-control" @if (isset($user)) value="{{$user->email}}"@endif>
+                    <input type="text" name="email" class="form-control" value="{{$user->email}}" disabled="disabled">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="short_name">{{__('users.password')}}</label>
+                <label class="col-sm-2 col-form-label" for="password">{{__('users.password')}}</label>
                 <div class="col-sm-10 col-md-4">
-                    <input type="password" name="password" class="form-control" @if (isset($user)) value="{{$user->password}}"@endif>
+                    <input type="password" name="password" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="short_name">{{__('users.password_confirmation')}}</label>
+                <label class="col-sm-2 col-form-label" for="password_confirmation">{{__('users.password_confirmation')}}</label>
                 <div class="col-sm-10 col-md-4">
                     <input type="password" name="password_confirmation" class="form-control">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">{{ !isset($user) ? __('controls.add') : __('controls.update')}}</button>
+            <button type="submit" class="btn btn-primary">{{__('controls.update')}}</button>
         </form>
     </div>
 @endsection

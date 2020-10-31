@@ -8,5 +8,6 @@ return [
     'create' => 'Создать пользователя',
     'are_u_sure_to_delete' => 'Вы уверены в том, что хотите удалить данного пользователя?',
     'password' => 'Пароль',
-    'password_confirmation' => 'Подтверждение пароля'
+    'password_confirmation' => 'Подтверждение пароля',
+    'profile' => 'Профиль'
 ];

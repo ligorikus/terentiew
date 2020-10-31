@@ -23,6 +23,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/sell', 'TradeController@sell')->name('trade.sell');
     Route::get('transactions', 'TransactionController@index')->name('transactions.index');
     Route::get('transactions/{transaction}', 'TransactionController@show')->name('transactions.show');
+
+    Route::get('profile', 'ProfileController@index')->name('profile.index');
+    Route::put('profile', 'ProfileController@update')->name('profile.update');
+
     Route::group(['middleware' => 'admin'], function () {
         Route::resource('products', 'ProductController');
         Route::get('products/{product}/delete', 'ProductController@delete')->name('products.delete');
