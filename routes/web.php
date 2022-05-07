@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ExportController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-\Illuminate\Support\Facades\Auth::routes();
+Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'TradeController@form')->name('trade.index');
@@ -28,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile', 'ProfileController@update')->name('profile.update');
 
     Route::group(['middleware' => 'admin'], function () {
+        Route::get('/export', [ExportController::class,'exportUsers'])->name('export-users');
+
         Route::resource('products', 'ProductController');
         Route::get('products/{product}/delete', 'ProductController@delete')->name('products.delete');
 
