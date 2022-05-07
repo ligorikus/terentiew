@@ -43,6 +43,7 @@ class TransactionSheet implements FromQuery, WithTitle, WithHeadings, WithMappin
             $transaction->wallet->type,
             $transaction->value,
             $transaction->type === 'income' ? 'Приход' : 'Расход',
+            $transaction->creator ? $transaction->creator->name : '',
             $transaction->created_at,
             $transaction->updated_at,
         ]);
